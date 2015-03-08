@@ -7,8 +7,8 @@
           %li= msg
   .form-group
     = f.label :content
-    = f.text_area :content, class: 'form-control'
+    = f.text_area :content, required: true, class: 'form-control'
   .form-group
-    = f.input :rating, collection: 1..5, class: 'form-control'
+    = f.input :rating, required: true, collection: 1..5, class: 'form-control'
 
   = f.submit 'Save', class: 'btn btn-default'
