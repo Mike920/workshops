@@ -1,0 +1,17 @@
+%div{:class => 'col-md-6'}
+  %h1 User
+  %br
+  %h3= user.firstname + ' ' + user.lastname
+  %h3= user.email
+  %h3= 'Registered at: ' + user.created_at.to_s.split(' ')[0]
+  %h3= 'Total reviews: ' + user.reviews.count.to_s
+%div{:class => 'col-md-6'}
+  %h1 Reviews
+  %br
+  - user.reviews[0..4].each do |review|
+    %p
+      %b= link_to review.product.title, [review.product.category, review.product]
+    %p
+      %b= 'Rating: ' + review.rating.to_s
+    %p= review.content
+    %hr
