@@ -13,10 +13,12 @@
       .container
         .navbar-header
           =link_to raw('<b>eReviews</b>'), root_path, class: 'navbar-brand'
-
           %a.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse"}
             %span.glyphicon.glyphicon-chevron-down
         .navbar-collapse.collapse
+          %ul.nav.navbar-nav
+            %li
+              =link_to 'Categories', categories_path
           %ul.nav.navbar-right.navbar-nav
             - if user_signed_in?
               %li.dropdown
@@ -37,10 +39,10 @@
                   %i.glyphicon.glyphicon-chevron-down
                 %ul.dropdown-menu
                   %li
-                    %a= link_to('Sign in', new_user_session_path)
+                    = link_to('Sign in', new_user_session_path)
                   %li.divider
                   %li
-                    %a= link_to('Sign up', new_user_registration_path)
+                    = link_to('Sign up', new_user_registration_path)
 
     / Begin Body
     .container
