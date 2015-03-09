@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
   include ProductsHelper
   before_action :authenticate_user!, only: [:update, :destroy, :create]
   expose(:category)
+  expose(:categories)
   expose(:products)
   expose(:product)
   expose(:review) { Review.new }

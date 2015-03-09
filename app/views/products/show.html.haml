@@ -1,11 +1,8 @@
 %p#notice= notice
 %p#error= flash[:error]
 
+%h2= product.title
 %p
-  %b Title:
-  = product.title
-%p
-  %b Description:
   = product.description
 %p
   %b Price:
@@ -16,10 +13,13 @@
   = product.category.name
 
 %h3 Reviews
-= render 'reviews/form'
+
 
 = render reviews
 
 = link_to 'Edit', edit_category_product_path(category.id, product.id)  if user_is_owner
-\|
-= link_to 'Back', category_products_path, class: 'btn btn-primary'
+
+
+%h3 Add a review
+
+= render 'reviews/form'

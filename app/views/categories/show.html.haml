@@ -1,17 +1,24 @@
 %p#notice= notice
 
 %p
-  %b Name:
-  = category.name
-
-%p
-  - category.products.each do |product|
-    = product.title
+  %h1
+    = category.name
+%br
+%table.table
+  - products.each do |product|
+    %tr{ :class => 'hlight'}
+      %td= link_to product.title, [category,product]
+      %td
+        - if user_signed_in? && current_user.products.exists?(product)
+          = link_to 'Edit', edit_category_product_path(category,product)
+      %td
+        - if user_signed_in? && current_user.products.exists?(product)
+          = link_to 'Destroy', [category,product], method: :delete, data: { confirm: 'Are you sure?' }
 
 %p
   %h3 New product
   = render 'products/form'
+%br
 - if user_is_admin
-  = link_to 'Edit', edit_category_path(category)
-  \|
-= link_to 'Back', categories_path, class: 'btn btn-primary'
+  = link_to 'Edit', edit_category_path(category), class: 'btn btn-primary'
+= link_to 'Back', categories_path, class: 'btn btn-default'

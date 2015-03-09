@@ -4,6 +4,7 @@ class CategoriesController < ApplicationController
 
   expose(:categories)
   expose(:category)
+  expose(:products){category.products}
   expose(:product) { Product.new }
 
   def index

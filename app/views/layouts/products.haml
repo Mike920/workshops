@@ -12,11 +12,12 @@
     %nav.navbar.navbar-static
       .container
         .navbar-header
-          %a.navbar-brand{:href => "#", :target => "ext"}
+          %a.navbar-brand{:href => "http://www.bootply.com", :target => "ext"}
             %b eReviews
           %a.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse"}
             %span.glyphicon.glyphicon-chevron-down
         .navbar-collapse.collapse
+
           %ul.nav.navbar-right.navbar-nav
             - if user_signed_in?
               %li.dropdown
@@ -41,9 +42,23 @@
                   %li.divider
                   %li
                     %a= link_to('Sign up', new_user_registration_path)
+    / Begin Body
     .container
       .no-gutter.row
-        #content.col-md-12
+        / left side column
+        .col-md-3
+          #sidebar.panel.panel-default
+            .panel-heading{:style => "background-color:#888;color:#fff;"}
+              Categories
+            .panel-body
+              %ul.nav.nav-stacked
+                - categories.each do |cat|
+                  %li{:class => active(cat) }
+                    = link_to cat.name, cat
+        / /panel body
+        / /panel
+        / /end left column
+        #content.col-md-9
           .panel
             .panel-heading{:style => "background-color:#111;color:#fff;"}
               %br

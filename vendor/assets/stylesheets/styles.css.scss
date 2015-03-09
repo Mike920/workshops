@@ -16,6 +16,9 @@ header {
 
 /* only apply sticky columns on wider screens */
 @media (min-width: 1200px) {
+  .container {
+    width: 1000px;
+  }
   #sidebar {
  	margin-left:15px;
   }
@@ -69,6 +72,20 @@ a,a:hover {
 	background-color:#77CCDD;
     padding:1px;
     width:100%;
+}
+.active{
+  background-color: rgb(217,217,217);
+}
+.hlight:hover{
+  background-color: rgb(238,238,238);
+}
+
+#content .panel-body{
+  min-height: 600px;
+}
+
+.col-md-3 .panel-body{
+  min-height: 300px;
 }
 
 .highlight {
